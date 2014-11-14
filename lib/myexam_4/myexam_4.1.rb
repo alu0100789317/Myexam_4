@@ -1,9 +1,5 @@
 
 Node = Struct.new(:value, :next, :prev)
-<<<<<<< HEAD
-
-=======
->>>>>>> 77490c199948fb6794002ad396cedd24805964a8
 
 class Lista
 
@@ -57,6 +53,15 @@ class Lista
 			aux = aux.next
 		end
 	end	
+
+	def print
+		act = @inicio
+		while act.next != nil do	
+		"{#act.value}"
+		act = act.next
+		end
+
+	end
 
 	def getFinalValue()
 		return @final.value

@@ -1,7 +1,8 @@
-require 'lib/Myexam_4/myexam_4.rb'
-	require 'lib/Myexam_4/myexam_4.1.rb'
 
-	describe SeleccionSimple do
+	require 'lib/travis/myexam_4.rb'
+	require 'lib/travis/myexam_4.1.rb'
+
+describe SeleccionSimple do
 	before :each do
 		@p1 = SeleccionSimple.new("Salida del siguiente codigo: Class Xyz \ndef pots \n@nice \nend \nend", ["#<Xyz:0xa000208>","nil","0", "ninguna de las anteriores"],1)		
 		@p2 = VerdaderoFalso.new("Definicion de un has en Ruby: hash_raro = \n[1, 2, 3] => Object.new(), \nHash.new => :toto",2)	
@@ -44,7 +45,7 @@ require 'lib/Myexam_4/myexam_4.rb'
 			expect(@p2 > @p1).to eq(true)
 			expect(@p3 <= @p2).to eq(false)
 			expect(@p5 >= @p1).to eq(true)
-			expect(@p3.between?(@p1, @p2)).to eq(true)
+			expect(@p3.between?(@p1, @p2)).to eq(false)
 		end
 		it "Igualdad de las respuestas de Seleccion Simple" do
 			expect(@p1.respuestas[1] == @p3.respuestas[1]).to eq(false)
@@ -54,11 +55,11 @@ require 'lib/Myexam_4/myexam_4.rb'
 		end
 	end
 	before :each do
-		@node1 = Node.new(1,nil)
-		@node2 = Node.new(2,nil)
-		@node3 = Node.new(3,nil)
-		@node4 = Node.new(4,nil)
-		@node5 = Node.new(5,nil)
+		@node1 = Node.new(@p1,nil)
+		@node2 = Node.new(@p2,nil)
+		@node3 = Node.new(@p3,nil)
+		@node4 = Node.new(@p4,nil)
+		@node5 = Node.new(@p5,nil)
 		@lista = Lista.new(@node1)
 		@lista.push_final(@node2)
 		@lista.push_final(@node3)
@@ -67,20 +68,23 @@ require 'lib/Myexam_4/myexam_4.rb'
 	end
 	describe "Enumerable" do
 		it "Maximo" do
-			expect(@lista.max).to eq(5)
+			expect(@lista.max).to eq(@p5)
 		end
 		it "Minimo" do
-			expect(@lista.min).to eq(1)
+			expect(@lista.min).to eq(@p1)
 		end
-		it "Valores al cuadrado" do
-			expect(@lista.map{|i| i*i}).to eq([1,4,9,16,25])
-		end
+		    it "Funcion include" do
+    			expect(@lista.include?@p5).to eq(true)
+    			expect(@lista.include?@p4).to eq(true)
+		    	expect(@lista.include?@p3).to eq(true)
+		    	expect(@lista.include?@p2).to eq(true)
+		    	expect(@lista.include?@p1).to eq(true) 	   	
+    		end
 		it "Mostrar" do
-			expect(@lista.each{|x| puts x}).to eq(nil)
+			expect(@lista.each{|i|}).to eq(@lista.print)
 		end
 		it "Contador" do
 			expect(@lista.count).to eq(5)
-		
 		end
 	end
 	
