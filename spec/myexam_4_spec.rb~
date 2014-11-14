@@ -1,6 +1,6 @@
 
-	require 'lib/myexam_4/myexam_4.rb'
-	require 'lib/myexam_4/myexam_4.1.rb'
+	require 'lib/travis/myexam_4.rb'
+	require 'lib/travis/myexam_4.1.rb'
 
 describe SeleccionSimple do
 	before :each do
