@@ -11,15 +11,16 @@ end
 
 class SeleccionSimple < Preguntas
 
-	attr_accessor :respuestas
+	attr_accessor :respuestas, :nivel
 
-	def initialize pregunta, respuestas
+	def initialize pregunta, respuestas, nivel
  		super(pregunta)
 		@respuestas = respuestas
+		@nivel = nivel
 	end
 	
 	def <=>(other)
-		pregunta.size <=> other.pregunta.size
+		nivel <=> other.nivel
 	end
 
 	def ==(other)
@@ -33,15 +34,16 @@ end
 
 class VerdaderoFalso < Preguntas
 
-	attr_accessor :respuestas
+	attr_accessor :respuestas, :nivel
 	
-	def initialize pregunta
+	def initialize pregunta, nivel
 		super(pregunta)
 		@respuestas = ["Verdadero","Falso"]
+		@nivel = nivel
 	end
 
 	def <=>(other)
-		pregunta.size <=> other.pregunta.size
+		nivel <=> other.nivel
 	end	
 	
 	def to_s

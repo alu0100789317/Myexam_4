@@ -8,11 +8,11 @@ end
 
 desc "Ejecutar con documentacion"
 task :doc do
-  sh "rspec -I. spec/p8_spec.rb --format documentation"
+  sh "rspec -I. spec/myexam_4_spec.rb --format documentation"
 end
 
 desc "Ejecutar con documentacion"
 task :html do
-  sh "rspec -I. spec/p8_spec.rb --format html -o pruebas.html"
+  sh "rspec -I. spec/myexam_4_spec.rb --format html -o pruebas.html"
 end
 

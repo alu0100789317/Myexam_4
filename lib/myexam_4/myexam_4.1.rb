@@ -1,6 +1,9 @@
 
 Node = Struct.new(:value, :next, :prev)
+<<<<<<< HEAD
 
+=======
+>>>>>>> 77490c199948fb6794002ad396cedd24805964a8
 
 class Lista
 
