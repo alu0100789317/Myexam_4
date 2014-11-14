@@ -1,5 +1,6 @@
 
-de = Struct.new(:value, :next, :prev)
+Node = Struct.new(:value, :next, :prev)
+
 
 class Lista
 
